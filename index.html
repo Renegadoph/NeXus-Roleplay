@@ -1,224 +1,399 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>NeXus Roleplay</title>
 
 <style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(120deg, #0b0b0b, #1a1a1a);
-    color: white;
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
 }
 
-header {
-    text-align: center;
-    padding: 25px;
-    font-size: 34px;
-    font-weight: bold;
-    color: #5865F2;
+body{
+background:#080808;
+color:white;
 }
 
-nav {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    background: #111;
-    padding: 12px;
+header{
+background:#111;
+padding:15px;
+position:sticky;
+top:0;
+z-index:999;
+box-shadow:0 0 15px #7b2cff;
 }
 
-nav button {
-    background: #5865F2;
-    border: none;
-    padding: 10px 14px;
-    color: white;
-    cursor: pointer;
-    border-radius: 6px;
-    font-weight: bold;
-    transition: 0.2s;
+nav{
+display:flex;
+justify-content:center;
+gap:10px;
+flex-wrap:wrap;
 }
 
-nav button:hover {
-    transform: scale(1.05);
-    background: #4752c4;
+nav button{
+background:#7b2cff;
+border:none;
+padding:10px 15px;
+border-radius:8px;
+color:white;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
 }
 
-.container {
-    max-width: 900px;
-    margin: auto;
-    padding: 20px;
+nav button:hover{
+transform:scale(1.05);
+background:#9b59ff;
 }
 
-.card {
-    background: #1c1c1c;
-    padding: 20px;
-    margin-top: 15px;
-    border-radius: 10px;
-    border-left: 4px solid #5865F2;
+.hero{
+text-align:center;
+padding:50px 20px;
 }
 
-.hidden { display: none; }
-
-.status {
-    display: inline-block;
-    padding: 5px 10px;
-    border-radius: 5px;
-    background: green;
-    font-weight: bold;
+.hero img{
+width:250px;
+max-width:90%;
+filter:drop-shadow(0 0 25px #7b2cff);
 }
 
-.offline { background: red; }
-
-button.action {
-    margin-top: 10px;
-    background: #5865F2;
-    border: none;
-    padding: 10px;
-    color: white;
-    border-radius: 6px;
-    cursor: pointer;
+.hero h1{
+font-size:60px;
+margin-top:20px;
+color:#9b59ff;
 }
 
-.footer {
-    text-align: center;
-    padding: 20px;
-    color: gray;
-    margin-top: 30px;
+.hero p{
+margin-top:15px;
+color:#ccc;
+font-size:18px;
 }
 
-/* MODAL */
-.modal {
-    display: none;
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.7);
+.btn{
+background:#7b2cff;
+padding:12px 20px;
+border:none;
+border-radius:8px;
+color:white;
+cursor:pointer;
+font-weight:bold;
+margin:5px;
 }
 
-.modal-content {
-    background: #1c1c1c;
-    width: 90%;
-    max-width: 500px;
-    margin: 10% auto;
-    padding: 20px;
-    border-radius: 10px;
+.btn:hover{
+background:#9b59ff;
 }
 
-input, textarea {
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    border: none;
-    border-radius: 5px;
+.container{
+width:90%;
+max-width:1200px;
+margin:auto;
 }
 
-textarea {
-    height: 100px;
-    resize: none;
+.card{
+background:#121212;
+padding:25px;
+margin-top:20px;
+border-radius:15px;
+border-left:5px solid #7b2cff;
+box-shadow:0 0 15px rgba(123,44,255,.2);
 }
+
+h2{
+margin-bottom:15px;
+color:#9b59ff;
+}
+
+.stats{
+display:flex;
+justify-content:space-around;
+flex-wrap:wrap;
+text-align:center;
+}
+
+.stats div{
+padding:20px;
+}
+
+.stats h1{
+font-size:40px;
+color:#9b59ff;
+}
+
+.staff{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:15px;
+}
+
+.staff-box{
+background:#1b1b1b;
+padding:20px;
+border-radius:10px;
+text-align:center;
+}
+
+.faq-item{
+margin-bottom:15px;
+}
+
+input,textarea{
+width:100%;
+padding:12px;
+margin-top:10px;
+background:#1b1b1b;
+border:none;
+border-radius:8px;
+color:white;
+}
+
+textarea{
+height:120px;
+resize:none;
+}
+
+footer{
+margin-top:50px;
+padding:25px;
+text-align:center;
+background:#111;
+color:#888;
+}
+
+.hidden{
+display:none;
+}
+
 </style>
 </head>
 
 <body>
 
-<header>NeXus Roleplay</header>
-
+<header>
 <nav>
-<button onclick="show('home')">Início</button>
-<button onclick="show('regras')">Regras</button>
-<button onclick="show('updates')">Atualizações</button>
-<button onclick="openModal()">Denunciar</button>
+<button onclick="showSection('inicio')">Início</button>
+<button onclick="showSection('regras')">Regras</button>
+<button onclick="showSection('updates')">Atualizações</button>
+<button onclick="showSection('equipe')">Equipe</button>
+<button onclick="showSection('faq')">FAQ</button>
+<button onclick="showSection('denuncia')">Denúncia</button>
 <button onclick="copyIP()">Copiar IP</button>
-<button onclick="window.open('https://discord.gg/KTcZ4WQNV', '_blank')">Discord</button>
+
+<button onclick="window.open('https://discord.gg/SEUDISCORD')">
+Discord
+</button>
 </nav>
+</header>
+
+<section class="hero">
+
+<img src="logo.png" alt="NeXus Roleplay">
+
+<h1>NeXus Roleplay</h1>
+
+<p>
+O futuro do Roleplay brasileiro está chegando.
+</p>
+
+<br>
+
+<button class="btn" onclick="copyIP()">
+COPIAR IP
+</button>
+
+<button class="btn"
+onclick="window.open('https://discord.gg/SEUDISCORD')">
+ENTRAR NO DISCORD
+</button>
+
+</section>
 
 <div class="container">
 
-<!-- HOME -->
-<div id="home" class="card">
-<h2>Bem-vindo ao NeXus Roleplay</h2>
-<p>Servidor SA-MP em desenvolvimento com sistema profissional de roleplay.</p>
+<div id="inicio">
 
-<p><b>Status do servidor:</b> 
-<span class="status">OFLINE</span>
+<div class="card">
+
+<h2>Status do Servidor</h2>
+
+<p>
+🟢 Em desenvolvimento
 </p>
 
-<button class="action" onclick="copyIP()">Copiar IP do Servidor</button>
 </div>
 
-<!-- REGRAS -->
-<div id="regras" class="card hidden">
-<h2>📜 Regras</h2>
-<p>• Proibido DM / RK / VDM</p>
-<p>• Respeite todos os jogadores</p>
-<p>• Proibido hacks ou mods ilegais</p>
-<p>• Jogue sempre em RP</p>
-<p>• Bugs devem ser reportados</p>
+<div class="card">
+
+<h2>Estatísticas</h2>
+
+<div class="stats">
+
+<div>
+<h1>24/7</h1>
+<p>Online</p>
 </div>
 
-<!-- UPDATES -->
-<div id="updates" class="card hidden">
-<h2>🔄 Atualizações</h2>
-<p>✔ Site criado</p>
-<p>✔ Sistema base pronto</p>
-<p>⏳ Sistema de empregos em desenvolvimento</p>
-<p>⏳ Economia sendo configurada</p>
+<div>
+<h1>100%</h1>
+<p>Roleplay</p>
+</div>
+
+<div>
+<h1>2026</h1>
+<p>Lançamento</p>
 </div>
 
 </div>
 
-<!-- MODAL DENUNCIA -->
-<div id="modal" class="modal">
-<div class="modal-content">
+</div>
+
+</div>
+
+<div id="regras" class="hidden">
+
+<div class="card">
+
+<h2>Regras do Servidor</h2>
+
+<p>✔ Proibido DM</p>
+<p>✔ Proibido RK</p>
+<p>✔ Proibido VDM</p>
+<p>✔ Respeite todos os jogadores</p>
+<p>✔ Proibido uso de cheats</p>
+<p>✔ Sempre pratique Roleplay</p>
+
+</div>
+
+</div>
+
+<div id="updates" class="hidden">
+
+<div class="card">
+
+<h2>Últimas Atualizações</h2>
+
+<p>✔ Site Oficial Criado</p>
+<p>✔ Sistema Base Concluído</p>
+<p>✔ Economia em Desenvolvimento</p>
+<p>✔ Novos Empregos em Produção</p>
+
+</div>
+
+</div>
+
+<div id="equipe" class="hidden">
+
+<div class="card">
+
+<h2>Equipe</h2>
+
+<div class="staff">
+
+<div class="staff-box">
+<h3>Pedro Zuza</h3>
+<p>Fundador</p>
+</div>
+
+<div class="staff-box">
+<h3>Em Breve</h3>
+<p>Administrador</p>
+</div>
+
+<div class="staff-box">
+<h3>Em Breve</h3>
+<p>Moderador</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="faq" class="hidden">
+
+<div class="card">
+
+<h2>Perguntas Frequentes</h2>
+
+<div class="faq-item">
+<b>Quando lança?</b>
+<p>Em breve.</p>
+</div>
+
+<div class="faq-item">
+<b>Como entrar?</b>
+<p>Entre pelo IP oficial.</p>
+</div>
+
+<div class="faq-item">
+<b>Onde denunciar?</b>
+<p>Na aba denúncia.</p>
+</div>
+
+</div>
+
+</div>
+
+<div id="denuncia" class="hidden">
+
+<div class="card">
+
 <h2>Denunciar Jogador</h2>
 
-<input type="text" id="nome" placeholder="Seu nome">
-<input type="text" id="acusado" placeholder="Nome do acusado">
-<textarea id="motivo" placeholder="Motivo da denúncia"></textarea>
+<input type="text" placeholder="Seu Nome">
 
-<button class="action" onclick="enviar()">Enviar denúncia</button>
-<button class="action" onclick="closeModal()" style="background:red;">Fechar</button>
-</div>
+<input type="text" placeholder="Nome do Acusado">
+
+<textarea placeholder="Motivo"></textarea>
+
+<br><br>
+
+<button class="btn" onclick="alert('Denúncia enviada!')">
+Enviar Denúncia
+</button>
+
 </div>
 
-<div class="footer">
-© 2026 NeXus Roleplay
 </div>
+
+</div>
+
+<footer>
+
+© 2026 NeXus Roleplay - Todos os Direitos Reservados
+
+</footer>
 
 <script>
-function show(page){
-    document.querySelectorAll('.card').forEach(c => c.classList.add('hidden'));
-    document.getElementById(page).classList.remove('hidden');
+
+function showSection(id){
+
+document.getElementById("inicio").classList.add("hidden");
+document.getElementById("regras").classList.add("hidden");
+document.getElementById("updates").classList.add("hidden");
+document.getElementById("equipe").classList.add("hidden");
+document.getElementById("faq").classList.add("hidden");
+document.getElementById("denuncia").classList.add("hidden");
+
+document.getElementById(id).classList.remove("hidden");
+
 }
 
 function copyIP(){
-    navigator.clipboard.writeText("Em breve");
-    alert("IP copiado!");
+
+navigator.clipboard.writeText("IP EM BREVE");
+
+alert("IP copiado!");
+
 }
 
-function openModal(){
-    document.getElementById("modal").style.display = "block";
-}
-
-function closeModal(){
-    document.getElementById("modal").style.display = "none";
-}
-
-function enviar(){
-    let nome = document.getElementById("nome").value;
-    let acusado = document.getElementById("acusado").value;
-    let motivo = document.getElementById("motivo").value;
-
-    if(nome && acusado && motivo){
-        alert("Denúncia enviada com sucesso!");
-        closeModal();
-    } else {
-        alert("Preencha todos os campos!");
-    }
-}
 </script>
 
 </body>
