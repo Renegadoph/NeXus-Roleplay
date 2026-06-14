@@ -3,361 +3,164 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>NeXus Roleplay</title>
 
 <style>
-
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial, sans-serif;
+font-family:Arial,sans-serif;
 }
 
 body{
-background:#080808;
+background:#0a0a0a;
 color:white;
 }
 
 header{
 background:#111;
-padding:15px;
-position:sticky;
-top:0;
-z-index:999;
-box-shadow:0 0 15px #7b2cff;
+padding:20px;
+text-align:center;
+box-shadow:0 0 15px #8a2be2;
+}
+
+.logo{
+width:220px;
+margin-bottom:10px;
+}
+
+h1{
+color:#a855f7;
+}
+
+.ip{
+font-size:20px;
+margin-top:10px;
+color:#c084fc;
 }
 
 nav{
 display:flex;
 justify-content:center;
 gap:10px;
+padding:15px;
+background:#151515;
 flex-wrap:wrap;
 }
 
 nav button{
-background:#7b2cff;
+background:#8a2be2;
 border:none;
 padding:10px 15px;
-border-radius:8px;
 color:white;
-font-weight:bold;
+border-radius:8px;
 cursor:pointer;
-transition:.3s;
+font-weight:bold;
 }
 
 nav button:hover{
-transform:scale(1.05);
-background:#9b59ff;
-}
-
-.hero{
-text-align:center;
-padding:50px 20px;
-}
-
-.hero img{
-width:250px;
-max-width:90%;
-filter:drop-shadow(0 0 25px #7b2cff);
-}
-
-.hero h1{
-font-size:60px;
-margin-top:20px;
-color:#9b59ff;
-}
-
-.hero p{
-margin-top:15px;
-color:#ccc;
-font-size:18px;
-}
-
-.btn{
-background:#7b2cff;
-padding:12px 20px;
-border:none;
-border-radius:8px;
-color:white;
-cursor:pointer;
-font-weight:bold;
-margin:5px;
-}
-
-.btn:hover{
-background:#9b59ff;
+background:#a855f7;
 }
 
 .container{
-width:90%;
-max-width:1200px;
+max-width:1100px;
 margin:auto;
+padding:20px;
 }
 
 .card{
-background:#121212;
-padding:25px;
-margin-top:20px;
-border-radius:15px;
-border-left:5px solid #7b2cff;
-box-shadow:0 0 15px rgba(123,44,255,.2);
-}
-
-h2{
-margin-bottom:15px;
-color:#9b59ff;
-}
-
-.stats{
-display:flex;
-justify-content:space-around;
-flex-wrap:wrap;
-text-align:center;
-}
-
-.stats div{
+background:#161616;
 padding:20px;
-}
-
-.stats h1{
-font-size:40px;
-color:#9b59ff;
-}
-
-.staff{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:15px;
-}
-
-.staff-box{
-background:#1b1b1b;
-padding:20px;
-border-radius:10px;
-text-align:center;
-}
-
-.faq-item{
-margin-bottom:15px;
-}
-
-input,textarea{
-width:100%;
-padding:12px;
-margin-top:10px;
-background:#1b1b1b;
-border:none;
-border-radius:8px;
-color:white;
-}
-
-textarea{
-height:120px;
-resize:none;
-}
-
-footer{
-margin-top:50px;
-padding:25px;
-text-align:center;
-background:#111;
-color:#888;
+border-radius:12px;
+margin-bottom:20px;
+border-left:4px solid #8a2be2;
 }
 
 .hidden{
 display:none;
 }
 
+footer{
+text-align:center;
+padding:20px;
+background:#111;
+margin-top:20px;
+color:#888;
+}
 </style>
 </head>
-
 <body>
 
 <header>
-<nav>
-<button onclick="showSection('inicio')">Início</button>
-<button onclick="showSection('regras')">Regras</button>
-<button onclick="showSection('updates')">Atualizações</button>
-<button onclick="showSection('equipe')">Equipe</button>
-<button onclick="showSection('faq')">FAQ</button>
-<button onclick="showSection('denuncia')">Denúncia</button>
-<button onclick="copyIP()">Copiar IP</button>
 
-<button onclick="window.open('https://discord.gg/SEUDISCORD')">
-Discord
-</button>
-</nav>
-</header>
-
-<section class="hero">
-
-<img src="logo.png" alt="NeXus Roleplay">
+<!-- TROQUE PELO NOME DA SUA IMAGEM -->
+<img src="logo.png" class="logo">
 
 <h1>NeXus Roleplay</h1>
 
+<div class="ip">
+149.56.41.55:7774
+</div>
+
+</header>
+
+<nav>
+<button onclick="abrir('inicio')">Início</button>
+<button onclick="abrir('regras')">Regras</button>
+<button onclick="abrir('updates')">Atualizações</button>
+<button onclick="abrir('formulario')">Denúncias</button>
+<button onclick="copiarIP()">Copiar IP</button>
+</nav>
+
+<div class="container">
+
+<div id="inicio" class="card">
+<h2>Bem-vindo ao NeXus Roleplay</h2>
+
 <p>
-O futuro do Roleplay brasileiro está chegando.
+Servidor Roleplay brasileiro.
 </p>
 
 <br>
 
-<button class="btn" onclick="copyIP()">
-COPIAR IP
+<button onclick="copiarIP()">
+📋 Copiar IP
 </button>
-
-<button class="btn"
-onclick="window.open('https://discord.gg/SEUDISCORD')">
-ENTRAR NO DISCORD
-</button>
-
-</section>
-
-<div class="container">
-
-<div id="inicio">
-
-<div class="card">
-
-<h2>Status do Servidor</h2>
-
-<p>
-🟢 Em desenvolvimento
-</p>
-
 </div>
 
-<div class="card">
+<div id="regras" class="card hidden">
+<h2>Regras</h2>
 
-<h2>Estatísticas</h2>
-
-<div class="stats">
-
-<div>
-<h1>24/7</h1>
-<p>Online</p>
+<p>✔ Respeitar todos os jogadores.</p>
+<p>✔ Proibido cheats.</p>
+<p>✔ Proibido DM.</p>
+<p>✔ Proibido RK.</p>
+<p>✔ Sempre fazer RP.</p>
 </div>
 
-<div>
-<h1>100%</h1>
-<p>Roleplay</p>
+<div id="updates" class="card hidden">
+<h2>Atualizações</h2>
+
+<p>✔ Site criado.</p>
+<p>✔ Sistema em desenvolvimento.</p>
+<p>✔ Novidades em breve.</p>
 </div>
 
-<div>
-<h1>2026</h1>
-<p>Lançamento</p>
-</div>
+<div id="formulario" class="card hidden">
 
-</div>
+<h2>Formulário de Denúncia</h2>
 
-</div>
+<!-- COLOQUE SEU FORMULÁRIO AQUI -->
 
-</div>
+<div style="
+padding:20px;
+background:#222;
+border-radius:10px;
+border:2px dashed #8a2be2;
+">
 
-<div id="regras" class="hidden">
-
-<div class="card">
-
-<h2>Regras do Servidor</h2>
-
-<p>✔ Proibido DM</p>
-<p>✔ Proibido RK</p>
-<p>✔ Proibido VDM</p>
-<p>✔ Respeite todos os jogadores</p>
-<p>✔ Proibido uso de cheats</p>
-<p>✔ Sempre pratique Roleplay</p>
-
-</div>
-
-</div>
-
-<div id="updates" class="hidden">
-
-<div class="card">
-
-<h2>Últimas Atualizações</h2>
-
-<p>✔ Site Oficial Criado</p>
-<p>✔ Sistema Base Concluído</p>
-<p>✔ Economia em Desenvolvimento</p>
-<p>✔ Novos Empregos em Produção</p>
-
-</div>
-
-</div>
-
-<div id="equipe" class="hidden">
-
-<div class="card">
-
-<h2>Equipe</h2>
-
-<div class="staff">
-
-<div class="staff-box">
-<h3>Pedro Zuza</h3>
-<p>Fundador</p>
-</div>
-
-<div class="staff-box">
-<h3>Em Breve</h3>
-<p>Administrador</p>
-</div>
-
-<div class="staff-box">
-<h3>Em Breve</h3>
-<p>Moderador</p>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<div id="faq" class="hidden">
-
-<div class="card">
-
-<h2>Perguntas Frequentes</h2>
-
-<div class="faq-item">
-<b>Quando lança?</b>
-<p>Em breve.</p>
-</div>
-
-<div class="faq-item">
-<b>Como entrar?</b>
-<p>Entre pelo IP oficial.</p>
-</div>
-
-<div class="faq-item">
-<b>Onde denunciar?</b>
-<p>Na aba denúncia.</p>
-</div>
-
-</div>
-
-</div>
-
-<div id="denuncia" class="hidden">
-
-<div class="card">
-
-<h2>Denunciar Jogador</h2>
-
-<input type="text" placeholder="Seu Nome">
-
-<input type="text" placeholder="Nome do Acusado">
-
-<textarea placeholder="Motivo"></textarea>
-
-<br><br>
-
-<button class="btn" onclick="alert('Denúncia enviada!')">
-Enviar Denúncia
-</button>
+SEU FORMULÁRIO AQUI
 
 </div>
 
@@ -366,31 +169,27 @@ Enviar Denúncia
 </div>
 
 <footer>
-
-© 2026 NeXus Roleplay - Todos os Direitos Reservados
-
+© 2026 NeXus Roleplay
 </footer>
 
 <script>
 
-function showSection(id){
+function copiarIP(){
+
+navigator.clipboard.writeText("149.56.41.55:7774");
+
+alert("IP copiado: 149.56.41.55:7774");
+
+}
+
+function abrir(id){
 
 document.getElementById("inicio").classList.add("hidden");
 document.getElementById("regras").classList.add("hidden");
 document.getElementById("updates").classList.add("hidden");
-document.getElementById("equipe").classList.add("hidden");
-document.getElementById("faq").classList.add("hidden");
-document.getElementById("denuncia").classList.add("hidden");
+document.getElementById("formulario").classList.add("hidden");
 
 document.getElementById(id).classList.remove("hidden");
-
-}
-
-function copyIP(){
-
-navigator.clipboard.writeText("IP EM BREVE");
-
-alert("IP copiado!");
 
 }
 
