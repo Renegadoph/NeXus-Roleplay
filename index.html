@@ -6,75 +6,140 @@
 <title>NeXus Roleplay</title>
 
 <style>
+
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial,sans-serif;
+font-family:'Segoe UI',sans-serif;
 }
 
 body{
 background:#0a0a0a;
-color:white;
+color:#fff;
 }
 
 header{
-background:#111;
-padding:20px;
+background:linear-gradient(135deg,#13071f,#25073d);
+padding:30px 20px;
 text-align:center;
-box-shadow:0 0 15px #8a2be2;
+border-bottom:3px solid #8a2be2;
 }
 
 .logo{
 width:220px;
-margin-bottom:10px;
+max-width:90%;
+filter:drop-shadow(0 0 20px #8a2be2);
 }
 
-h1{
+header h1{
+margin-top:15px;
+font-size:45px;
 color:#a855f7;
 }
 
 .ip{
-font-size:20px;
 margin-top:10px;
-color:#c084fc;
+font-size:20px;
+font-weight:bold;
+color:#d8b4fe;
 }
 
 nav{
+background:#111;
 display:flex;
 justify-content:center;
+flex-wrap:wrap;
 gap:10px;
 padding:15px;
-background:#151515;
-flex-wrap:wrap;
+position:sticky;
+top:0;
+z-index:999;
 }
 
 nav button{
 background:#8a2be2;
 border:none;
-padding:10px 15px;
+padding:10px 18px;
 color:white;
+font-weight:bold;
 border-radius:8px;
 cursor:pointer;
-font-weight:bold;
+transition:.3s;
 }
 
 nav button:hover{
 background:#a855f7;
+transform:translateY(-2px);
 }
 
 .container{
-max-width:1100px;
+width:90%;
+max-width:1200px;
 margin:auto;
-padding:20px;
+padding:25px 0;
 }
 
 .card{
 background:#161616;
-padding:20px;
-border-radius:12px;
+padding:25px;
+border-radius:15px;
 margin-bottom:20px;
-border-left:4px solid #8a2be2;
+border-left:5px solid #8a2be2;
+box-shadow:0 0 15px rgba(138,43,226,.2);
+}
+
+.card h2{
+margin-bottom:15px;
+color:#c084fc;
+}
+
+.hero{
+text-align:center;
+padding:40px 20px;
+}
+
+.hero h2{
+font-size:35px;
+margin-bottom:15px;
+}
+
+.hero p{
+color:#bbb;
+font-size:18px;
+}
+
+.btn{
+background:#8a2be2;
+border:none;
+padding:12px 20px;
+color:white;
+font-weight:bold;
+border-radius:8px;
+cursor:pointer;
+margin:5px;
+}
+
+.btn:hover{
+background:#a855f7;
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:15px;
+}
+
+.stat{
+background:#1f1f1f;
+padding:20px;
+border-radius:10px;
+text-align:center;
+}
+
+.stat h3{
+font-size:30px;
+color:#a855f7;
 }
 
 .hidden{
@@ -82,19 +147,28 @@ display:none;
 }
 
 footer{
-text-align:center;
-padding:20px;
 background:#111;
-margin-top:20px;
+padding:20px;
+text-align:center;
 color:#888;
+margin-top:30px;
 }
+
+.form-placeholder{
+background:#222;
+padding:30px;
+text-align:center;
+border:2px dashed #8a2be2;
+border-radius:10px;
+color:#bbb;
+}
+
 </style>
 </head>
 <body>
 
 <header>
 
-<!-- TROQUE PELO NOME DA SUA IMAGEM -->
 <img src="logo.png" class="logo">
 
 <h1>NeXus Roleplay</h1>
@@ -106,61 +180,288 @@ color:#888;
 </header>
 
 <nav>
-<button onclick="abrir('inicio')">Início</button>
-<button onclick="abrir('regras')">Regras</button>
-<button onclick="abrir('updates')">Atualizações</button>
-<button onclick="abrir('formulario')">Denúncias</button>
-<button onclick="copiarIP()">Copiar IP</button>
+
+<button onclick="mostrar('inicio')">Início</button>
+<button onclick="mostrar('regras')">Regras</button>
+<button onclick="mostrar('updates')">Atualizações</button>
+<button onclick="mostrar('denuncias')">Denúncias</button>
+
+<button onclick="copiarIP()">
+Copiar IP
+</button>
+
+<button onclick="window.open('https://discord.gg/KTcZ4WQNV')">
+Discord
+</button>
+
 </nav>
 
 <div class="container">
 
-<div id="inicio" class="card">
+<div id="inicio">
+
+<div class="card hero">
+
 <h2>Bem-vindo ao NeXus Roleplay</h2>
 
 <p>
-Servidor Roleplay brasileiro.
+Viva uma experiência única de Roleplay,
+construa sua história e domine a cidade.
 </p>
 
 <br>
 
-<button onclick="copiarIP()">
-📋 Copiar IP
+<button class="btn" onclick="copiarIP()">
+📋 COPIAR IP
 </button>
+
 </div>
 
-<div id="regras" class="card hidden">
-<h2>Regras</h2>
+<div class="card">
 
+<h2>Status do Servidor</h2>
+
+<p>🟢 Online</p>
+
+<p>
+IP: <b>149.56.41.55:7774</b>
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>Estatísticas</h2>
+
+<div class="stats">
+
+<div class="stat">
+<h3>24/7</h3>
+<p>Disponibilidade</p>
+</div>
+
+<div class="stat">
+<h3>RP</h3>
+<p>Experiência Realista</p>
+</div>
+
+<div class="stat">
+<h3>2026</h3>
+<p>Nova Temporada</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="regras" class="hidden">
+
+<div class="card">
+
+<h2>📖 Bíblia RP Oficial - NeXus Roleplay</h2>
+
+<h3>✟ Prefácio</h3>
+
+<p>
+Bem-vindo ao NeXus Roleplay.
+Ao entrar em nossa cidade, você assume uma identidade, uma história e um propósito.
+Todas as suas ações deverão seguir esta Bíblia RP.
+O desconhecimento das regras não o isenta de punições.
+</p>
+
+<hr><br>
+
+<h3>📜 Capítulo I - Os Mandamentos do Roleplay</h3>
+
+<p>✔ Interpretar seu personagem acima de tudo.</p>
+<p>✔ Valorizar sua vida em qualquer situação.</p>
 <p>✔ Respeitar todos os jogadores.</p>
-<p>✔ Proibido cheats.</p>
-<p>✔ Proibido DM.</p>
-<p>✔ Proibido RK.</p>
-<p>✔ Sempre fazer RP.</p>
+<p>✔ Não utilizar informações externas.</p>
+<p>✔ Não utilizar programas ilegais.</p>
+<p>✔ Não abusar de bugs.</p>
+<p>✔ Não matar sem motivo RP.</p>
+<p>✔ Não desconectar para fugir de RP.</p>
+<p>✔ Não realizar ações impossíveis.</p>
+<p>✔ Não prejudicar a experiência dos demais.</p>
+
+<hr><br>
+
+<h3>❌ Capítulo III - Infrações RP</h3>
+
+<p><b>MG (Meta Gaming):</b> Utilizar informações obtidas fora do jogo.</p>
+
+<p><b>PG (Power Gaming):</b> Realizar ações impossíveis ou irreais.</p>
+
+<p><b>DM (Death Match):</b> Matar sem motivo RP.</p>
+
+<p><b>RDM:</b> Matar pessoas aleatoriamente.</p>
+
+<p><b>RK (Revenge Kill):</b> Retornar para se vingar após morrer.</p>
+
+<p><b>TK (Team Kill):</b> Matar membros da própria organização.</p>
+
+<p><b>CR (Car Ramming):</b> Utilizar veículos como arma.</p>
+
+<p><b>CP (Car Parking):</b> Prender jogadores usando veículos.</p>
+
+<p><b>BH (Bunny Hop):</b> Ficar pulando para ganhar velocidade.</p>
+
+<p><b>Combat Log:</b> Desconectar para fugir de uma situação RP.</p>
+
+<hr><br>
+
+<h3>❤️ Capítulo IV - Valorização da Vida</h3>
+
+<p>
+Seu personagem deve temer a morte.
+</p>
+
+<p>
+É proibido reagir sozinho contra vários criminosos armados.
+</p>
+
+<p>
+É proibido agir como se fosse imortal.
+</p>
+
+<hr><br>
+
+<h3>🔫 Capítulo VI - Assaltos</h3>
+
+<p>✔ Devem possuir contexto RP.</p>
+
+<p>✔ O assaltante deve anunciar o assalto.</p>
+
+<p>✔ A vítima deve colaborar quando estiver rendida.</p>
+
+<p>❌ Proibido assaltar em Safe Zones.</p>
+
+<p>❌ Proibido assaltar novatos.</p>
+
+<hr><br>
+
+<h3>🚔 Capítulo VII - Polícia</h3>
+
+<p>✔ Toda abordagem deve possuir motivo RP.</p>
+
+<p>✔ O policial deve se identificar.</p>
+
+<p>✔ Prisões devem possuir justificativa.</p>
+
+<p>❌ Abuso de autoridade é proibido.</p>
+
+<hr><br>
+
+<h3>🏥 Capítulo VIII - Serviços Públicos</h3>
+
+<p>✔ SAMU deve realizar atendimento RP.</p>
+
+<p>✔ Mecânicos devem realizar reparos RP.</p>
+
+<hr><br>
+
+<h3>🏢 Capítulo IX - Organizações</h3>
+
+<p>✔ Devem agir com coerência RP.</p>
+
+<p>✔ Líderes são responsáveis por seus membros.</p>
+
+<p>❌ Favorecimento indevido é proibido.</p>
+
+<hr><br>
+
+<h3>🛡️ Capítulo X - Safe Zones</h3>
+
+<p>Locais Seguros:</p>
+
+<p>• Hospital</p>
+<p>• Prefeitura</p>
+<p>• Spawn Civil</p>
+<p>• Áreas Administrativas</p>
+
+<br>
+
+<p>❌ Proibido matar.</p>
+<p>❌ Proibido assaltar.</p>
+<p>❌ Proibido sequestrar.</p>
+
+<hr><br>
+
+<h3>⚖️ Capítulo XI - Punições</h3>
+
+<p>• Advertência</p>
+<p>• Prisão Administrativa</p>
+<p>• Kick</p>
+<p>• Suspensão</p>
+<p>• Banimento Temporário</p>
+<p>• Banimento Permanente</p>
+
+<hr><br>
+
+<h3>📖 Capítulo XII - Regras de Ouro</h3>
+
+<p>1. A administração possui a palavra final.</p>
+
+<p>2. O bom senso prevalece acima de qualquer regra.</p>
+
+<p>3. O desconhecimento das regras não é desculpa.</p>
+
+<p>4. O respeito é obrigatório.</p>
+
+<p>5. O RP sempre vem antes da vitória.</p>
+
+<hr><br>
+
+<h3>📜 Encerramento</h3>
+
+<p>
+"Uma cidade não é construída por prédios, mas pelas histórias de seus cidadãos."
+</p>
+
+<br>
+
+<p>
+Ao jogar no NeXus Roleplay você concorda automaticamente com todas as regras desta Bíblia RP.
+</p>
+
 </div>
 
-<div id="updates" class="card hidden">
-<h2>Atualizações</h2>
+</div>
+<div id="updates" class="hidden">
 
-<p>✔ Site criado.</p>
-<p>✔ Sistema em desenvolvimento.</p>
-<p>✔ Novidades em breve.</p>
+<div class="card">
+
+<h2>🔄 Atualizações</h2>
+
+<p>✔ Site oficial lançado</p>
+<br>
+<p>✔ Sistemas principais concluídos</p>
+<br>
+<p>✔ Novos empregos em desenvolvimento</p>
+<br>
+<p>✔ Economia sendo balanceada</p>
+
 </div>
 
-<div id="formulario" class="card hidden">
+</div>
 
-<h2>Formulário de Denúncia</h2>
+<div id="denuncias" class="hidden">
 
-<!-- COLOQUE SEU FORMULÁRIO AQUI -->
+<div class="card">
 
-<div style="
-padding:20px;
-background:#222;
-border-radius:10px;
-border:2px dashed #8a2be2;
-">
+<h2>🚨 Denúncias</h2>
 
-SEU FORMULÁRIO AQUI
+<div class="form-placeholder">
+
+SEU FORMULÁRIO DE DENÚNCIA FICARÁ AQUI
+
+<br><br>
+
+(Cole o código do formulário neste espaço)
+
+</div>
 
 </div>
 
@@ -169,7 +470,9 @@ SEU FORMULÁRIO AQUI
 </div>
 
 <footer>
-© 2026 NeXus Roleplay
+
+© 2026 NeXus Roleplay - Todos os Direitos Reservados
+
 </footer>
 
 <script>
@@ -178,18 +481,18 @@ function copiarIP(){
 
 navigator.clipboard.writeText("149.56.41.55:7774");
 
-alert("IP copiado: 149.56.41.55:7774");
+alert("IP copiado com sucesso!");
 
 }
 
-function abrir(id){
+function mostrar(secao){
 
 document.getElementById("inicio").classList.add("hidden");
 document.getElementById("regras").classList.add("hidden");
 document.getElementById("updates").classList.add("hidden");
-document.getElementById("formulario").classList.add("hidden");
+document.getElementById("denuncias").classList.add("hidden");
 
-document.getElementById(id).classList.remove("hidden");
+document.getElementById(secao).classList.remove("hidden");
 
 }
 
