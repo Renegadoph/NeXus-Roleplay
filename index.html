@@ -380,10 +380,6 @@ margin-top:30px;
 
 
 
-<button onclick="mostrar('denuncias')">Denúncias</button>
-
-
-
 <button onclick="copiarIP()">Copiar IP</button>
 
 
@@ -732,37 +728,6 @@ Ao jogar no NeXus Roleplay você concorda automaticamente com todas as regras de
 
 
 
-<div id="denuncias" class="hidden">
-
-
-
-<div class="card">
-
-
-
-<h2>🚨 Denúncias</h2>
-
-
-
-<form action="process.php" method="POST" class="form-placeholder">
-  Autor: <input type="text" name="autor" required><br><br>
-  Denunciado: <input type="text" name="denunciado" required><br><br>
-  Motivo: <textarea name="motivo" required></textarea><br><br>
-  Provas (link): <input type="text" name="provas"><br><br>
-  <button type="submit">Enviar denúncia</button>
-</form>
-
-
-
-
-</div>
-
-
-
-</div>
-
-
-
 </div>
 
 
@@ -804,8 +769,6 @@ document.getElementById("inicio").classList.add("hidden");
 document.getElementById("regras").classList.add("hidden");
 
 document.getElementById("updates").classList.add("hidden");
-
-document.getElementById("denuncias").classList.add("hidden");
 
 
 
